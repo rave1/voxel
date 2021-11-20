@@ -79,7 +79,10 @@ impl State {
                 entry_point: "fs_main",
                 targets: &[wgpu::ColorTargetState { // 4.
                     format: config.format,
-                    blend: Some(wgpu::BlendState::REPLACE),
+                    blend: Some(wgpu::BlendState {
+                        color: wgpu::BlendComponent::REPLACE,
+                        alpha: wgpu::BlendComponent::REPLACE,
+                    }),
                     write_mask: wgpu::ColorWrites::ALL,
                 }],
             }),
@@ -103,6 +106,8 @@ impl State {
             },
 
         });
+
+        
 
         Self {
             surface,
