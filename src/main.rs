@@ -202,6 +202,17 @@ fn main() {
                                 },
                             ..
                         } => *control_flow = ControlFlow::Exit,
+                        
+                        WindowEvent::KeyboardInput {
+                            input:
+                                KeyboardInput {
+                                    state: ElementState::Pressed,
+                                    virtual_keycode: Some(VirtualKeyCode::Space),
+                                    ..
+                                },
+                                ..
+                        } => println!("it works!"),
+
                         WindowEvent::Resized(physical_size) => {
                             state.resize(*physical_size);
                         }
